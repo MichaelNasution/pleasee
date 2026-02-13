@@ -10,7 +10,7 @@ const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
 // 1. DAFTAR FILE GAMBAR
-// Pastikan nama file terakhir sudah kamu RENAME di GitHub menjadi 'tegaya.png'
+// Pastikan nama file "tegaya.png" sudah sesuai dengan yang kamu rename
 const noImages = [
     "yakin.png",
     "beneran nih.png",
@@ -20,7 +20,7 @@ const noImages = [
     "nanti nyesel lho.png",
     "gak mau tau klik yes.png",
     "kok masih NO sih.png",
-    "tegaya.png" // Nama file baru yang aman (tanpa titik tiga)
+    "tegaya.png" 
 ];
 
 // Preload gambar
@@ -47,26 +47,21 @@ yesBtn.style.transition = "transform 0.3s ease";
 
 noBtn.addEventListener("click", () => {
     
-    // A. Ganti Gambar (Selama stok gambar masih ada)
+    // A. Ganti Gambar (Jika belum habis)
     if (noIndex < noImages.length) {
         noBtn.src = noImages[noIndex]; 
         noIndex++; 
     }
     
-    // CATATAN:
-    // Jika gambar sudah habis (sampai 'tegaya.png'), kode di atas (if) tidak jalan.
-    // Artinya tombol No akan DIAM SAJA di gambar terakhir.
-    // Tidak ada kode untuk menghilangkan tombol No.
-
     // B. Perbesar Tombol Yes (Selalu jalan)
     yesScale += 0.5; 
     
-    // Pindahkan YES ke tengah dan pastikan menutupi tombol No
+    // Pindahkan YES ke tengah layer paling atas
     if (yesBtn.style.position !== "fixed") {
         yesBtn.style.position = "fixed";
         yesBtn.style.top = "50%";
         yesBtn.style.left = "50%";
-        yesBtn.style.zIndex = "1000"; // Layer paling atas
+        yesBtn.style.zIndex = "1000"; 
     }
     
     yesBtn.style.transform = `translate(-50%, -50%) scale(${yesScale})`;
@@ -87,9 +82,6 @@ yesBtn.addEventListener("click", () => {
     // Tampilkan pesan akhir
     finalText.style.display = "block";
     
-    // Isi pesan
-    finalText.innerHTML = "Kalehh: When you have time??<br>I have gifts for you sweetheart 🎁";
-
     // Klik pesan -> WhatsApp
     finalText.onclick = function() {
         window.location.href = "https://wa.me/6282249912100";
